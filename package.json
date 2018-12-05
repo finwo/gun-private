@@ -33,6 +33,7 @@
     "to-byte-array": "file:lib/to-byte-array",
     "to-hex": "file:lib/to-hex",
     "ws": "^6.1.2",
+    "uws": "file:lib/uws",
     "xterm": "^3.8.0"
   },
   "devDependencies": {
