@@ -141,40 +141,6 @@ function wrap(ws,key) {
 //   return ws;
 // }
 
-// module.exports = function (key) {
-//   function sws(...args) {
-//     return wrapSocket(new WS(...args),key);
-//   }
-//
-//   sws.Server = function (...args) {
-//     let org = new WS.Server(...args),
-//         wss = Object.create(org);
-//
-//     // Intercept on-connection
-//     wss.on = function (type, listener) {
-//       switch (type) {
-//
-//         // Add encryption layer
-//         case 'connection':
-//           return org.on(type, function (socket, req) {
-//             listener(wrapSocket(socket,key),req);
-//           });
-//
-//         // Do not modify
-//         default:
-//           return org.on(type, listener);
-//       }
-//     };
-//
-//     return wss;
-//   };
-//
-//   return sws;
-// };
-
-
-
-
 },{"rc4":1,"through":34,"uws":4}],3:[function(require,module,exports){
 (function (Buffer){
 const isBuffer = require('is-buffer');
@@ -223,6 +189,10 @@ if ( 'object' === typeof window ) {
           chunk = Buffer.from(await new Response(chunk).arrayBuffer());
         }
       }
+
+      // DEBUG
+      // this is to verify packages are actually being received
+      console.log('incoming:', chunk);
 
       out.emit('message', chunk);
     };
