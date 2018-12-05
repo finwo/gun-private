@@ -4,7 +4,8 @@
   "description": "Private gun cluster",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=babel jest --detectOpenHandles"
+    "test": "NODE_ENV=babel jest --detectOpenHandles",
+    "server": "nodemon --exec node --require esm server --port 3000"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,16 @@
   },
   "homepage": "https://github.com/finwo/gun-private#readme",
   "dependencies": {
+    "dotenv": "^6.1.0",
+    "ecstatic": "^3.3.0",
+    "esm": "^3.0.84",
     "gun": "^0.9.99999",
+    "minimist": "^1.2.0",
+    "nodemon": "^1.18.7",
     "to-byte-array": "file:lib/to-byte-array",
-    "to-hex": "file:lib/to-hex"
+    "to-hex": "file:lib/to-hex",
+    "ws": "^6.1.2",
+    "xterm": "^3.8.0"
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",
