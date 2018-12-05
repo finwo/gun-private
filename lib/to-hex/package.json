@@ -1,0 +1,7 @@
+{
+  "name": "to-hex",
+  "main": "to-hex.js",
+  "dependencies" : {
+    "is-buffer": "^2.0.3"
+  }
+}

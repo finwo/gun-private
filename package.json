@@ -1,23 +1,33 @@
 {
-  "name"         : "gun-private",
-  "version"      : "0.0.1",
-  "description"  : "Private gun cluster",
-  "main"         : "index.js",
-  "scripts"      : {
-    "test" : "echo \"Error: no test specified\" && exit 1"
+  "name": "gun-private",
+  "version": "0.0.1",
+  "description": "Private gun cluster",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=babel jest --detectOpenHandles"
   },
-  "repository"   : {
-    "type" : "git",
-    "url"  : "git+https://github.com/finwo/gun-private.git"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finwo/gun-private.git"
   },
-  "author"       : "Robin Bron <robin@finwo.nl>",
-  "license"      : "MIT",
-  "bugs"         : {
-    "url" : "https://github.com/finwo/gun-private/issues"
+  "author": "Robin Bron <robin@finwo.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/finwo/gun-private/issues"
   },
-  "homepage"     : "https://github.com/finwo/gun-private#readme",
-  "dependencies" : {
-    "gun"           : "^0.9.99999",
-    "to-byte-array" : "file:lib/to-byte-array"
+  "homepage": "https://github.com/finwo/gun-private#readme",
+  "dependencies": {
+    "gun": "^0.9.99999",
+    "to-byte-array": "file:lib/to-byte-array",
+    "to-hex": "file:lib/to-hex"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "expect": "^23.6.0",
+    "jest": "^23.6.0",
+    "jest-isa": "0.0.4"
   }
 }
