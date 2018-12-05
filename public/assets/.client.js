@@ -114,13 +114,11 @@
   // Subscribe to activity list
   gun.get('activity').map().on(function (activity, id) {
     activities[id] = activity;
-    console.log('activity', activity);
     redraw();
   });
 
   // Subscribe to user list
   gun.get('user').map().on(function (user, id) {
-    console.log('user',user);
     const now = new Date().getTime(),
           exp = now - (30*1000);
     users[id] = user;
@@ -139,6 +137,7 @@
     const now = new Date();
     userRef.get('iat').put(now.getTime());
     userRef.get('time').put( ('00'+now.getHours()).substr(-2) + ':' + ('00'+now.getMinutes()).substr(-2));
+    userRef.get('name').put(username);
   },10*1000);
 
   // Notify the group I entered
