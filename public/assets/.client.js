@@ -77,7 +77,7 @@
         '\u2502' +
         (printUsers.shift() || " ".repeat(20)) +
         '\u2502' +
-        (printLines.shift() || " ".repeat(20)) +
+        (printLines.shift() || " ".repeat(cols-23)) +
         '\u2502'
       );
     }
@@ -139,7 +139,7 @@
     const now = new Date();
     userRef.get('iat').put(now.getTime());
     userRef.get('time').put( ('00'+now.getHours()).substr(-2) + ':' + ('00'+now.getMinutes()).substr(-2));
-  },20*1000);
+  },10*1000);
 
   // Notify the group I entered
   gun.get('activity').set({

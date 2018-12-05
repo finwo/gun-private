@@ -54,10 +54,30 @@ module.exports = function(key) {
 };
 
 function wrap(ws,key) {
-  return ws;
-  // let local = Object.create(ws);
+  let local = Object.create(ws);
+  console.log(ws);
 
-  // return local;
+  local.send = function(chunk) {
+    console.log('OUT', chunk);
+    return ws.send(chunk);
+  };
+
+  local.on = function( type, listener ) {
+    if ('message' !== type) return ws.on(type,listener);
+    return ws.on('message', function(chunk) {
+      console.log('IN', chunk);
+      listener(chunk);
+    });
+  }
+
+  Object.defineProperty(local,'onmessage',{
+    enumerable: true,
+    configurable: true,
+    get: () => function(){},
+    set: listener => local.on('message',listener)
+  });
+
+  return local;
 }
 
 // function wrapSocket( socket, key ) {
@@ -174,13 +194,14 @@ let { EventEmitter } = require('events');
 if ( 'object' === typeof window ) {
   module.exports = function(...args) {
     let ws  = new WebSocket(...args);
-    let out = new EventEmitter;
+    let out = new EventEmitter();
     ws.onopen = function() {
       out.emit('open')
     };
     ws.onclose = function() {
       out.emit('close')
     };
+
     ws.onmessage = async function(chunk) {
       chunk = chunk.data || chunk;
 
@@ -190,12 +211,9 @@ if ( 'object' === typeof window ) {
         }
       }
 
-      // DEBUG
-      // this is to verify packages are actually being received
-      console.log('incoming:', chunk);
-
       out.emit('message', chunk);
     };
+
     out.send = function(chunk) {
       ws.send(chunk);
     };
@@ -6298,7 +6316,7 @@ module.exports = function() {
         '\u2502' +
         (printUsers.shift() || " ".repeat(20)) +
         '\u2502' +
-        (printLines.shift() || " ".repeat(20)) +
+        (printLines.shift() || " ".repeat(cols-23)) +
         '\u2502'
       );
     }
@@ -6360,7 +6378,7 @@ module.exports = function() {
     const now = new Date();
     userRef.get('iat').put(now.getTime());
     userRef.get('time').put( ('00'+now.getHours()).substr(-2) + ':' + ('00'+now.getMinutes()).substr(-2));
-  },20*1000);
+  },10*1000);
 
   // Notify the group I entered
   gun.get('activity').set({
