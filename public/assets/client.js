@@ -29,6 +29,7 @@ module.exports = function RC4(key) {
 
 }).call(this,require("buffer").Buffer)
 },{"buffer":7,"is-buffer":14,"to-byte-array":3}],2:[function(require,module,exports){
+(function (Buffer){
 const through = require('through'),
       rc4     = require('rc4'),
       WS      = require('uws');
@@ -54,19 +55,22 @@ module.exports = function(key) {
 };
 
 function wrap(ws,key) {
-  let local = Object.create(ws);
-  console.log(ws);
+  let local   = Object.create(ws),
+      encrypt = rc4(key),
+      decrypt = rc4(key);
 
-  local.send = function(chunk) {
-    console.log('OUT', chunk);
-    return ws.send(chunk);
+  local.send = async function(plain) {
+    let ciphertext = await encrypt(Buffer.from(plain));
+    console.log('OUT', plain);
+    return ws.send(ciphertext);
   };
 
   local.on = function( type, listener ) {
     if ('message' !== type) return ws.on(type,listener);
-    return ws.on('message', function(chunk) {
-      console.log('IN', chunk);
-      listener(chunk);
+    return ws.on('message', async function(ciphertext) {
+      let plain = await decrypt(Buffer.from(ciphertext))
+      console.log('IN', plain.toString());
+      listener(plain.toString());
     });
   }
 
@@ -161,7 +165,8 @@ function wrap(ws,key) {
 //   return ws;
 // }
 
-},{"rc4":1,"through":34,"uws":4}],3:[function(require,module,exports){
+}).call(this,require("buffer").Buffer)
+},{"buffer":7,"rc4":1,"through":34,"uws":4}],3:[function(require,module,exports){
 (function (Buffer){
 const isBuffer = require('is-buffer');
 
@@ -214,8 +219,18 @@ if ( 'object' === typeof window ) {
       out.emit('message', chunk);
     };
 
+    let queue = [];
     out.send = function(chunk) {
-      ws.send(chunk);
+      queue.push(chunk);
+      let current;
+      try {
+        while(queue.length) {
+          current = queue.shift();
+          ws.send(current);
+        }
+      } catch(e) {
+        if (current) queue.unshift(current);
+      }
     };
     return out;
   };
