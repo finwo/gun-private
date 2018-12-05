@@ -4,16 +4,19 @@ require('dotenv').config();
 // Arg parsing
 const argv = require('minimist')(process.argv.slice(2));
 
+let key = argv.key || process.env.KEY || 'deadbeef';
+
 // Load dependencies
-const http = require('http');
+const http    = require('http'),
+      through = require('through'),
+      rc4     = require('rc4'),
+      sws     = require('sws');
 
 // Load GUN & extras
-const Gun  = require('gun');
+const Gun = require('gun');
 
 // Set up the http server
-let server = http.createServer(Gun.serve( `${__dirname}/../public`));
-
-//
+let server = http.createServer(Gun.serve(`${__dirname}/../public`));
 
 // Start http
 let port = parseInt(argv.port || process.env.PORT || 3000);
@@ -24,7 +27,8 @@ server.listen(port, err => {
 
 // Start gun
 let gun = Gun({
-  web: server
+  ws       : {server},
+  WebSocket: sws(key)
 });
 
 // let gun = new Gun();
