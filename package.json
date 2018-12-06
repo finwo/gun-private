@@ -28,7 +28,7 @@
     "gun": "^0.9.99999",
     "minimist": "^1.2.0",
     "nodemon": "^1.18.7",
-    "rc4": "file:lib/rc4",
+    "rc4-crypt": "^0.2.0",
     "sws": "file:lib/sws",
     "through": "^2.3.8",
     "to-byte-array": "file:lib/to-byte-array",

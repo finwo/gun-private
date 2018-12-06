@@ -7,10 +7,8 @@ const argv = require('minimist')(process.argv.slice(2));
 let key = argv.key || process.env.KEY || 'deadbeef';
 
 // Load dependencies
-const http    = require('http'),
-      through = require('through'),
-      rc4     = require('rc4'),
-      sws     = require('sws');
+const http = require('http'),
+      sws  = require('sws');
 
 // Load GUN & extras
 const Gun = require('gun');
