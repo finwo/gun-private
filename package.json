@@ -31,8 +31,6 @@
     "rc4-crypt": "^0.2.0",
     "sws": "file:lib/sws",
     "through": "^2.3.8",
-    "to-byte-array": "file:lib/to-byte-array",
-    "to-hex": "file:lib/to-hex",
     "ws": "^6.1.2",
     "ws-transform": "^0.1.1"
   },

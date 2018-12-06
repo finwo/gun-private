@@ -12,14 +12,14 @@
 ## Where is what
 
 custom packages:
-
-- [to-byte-array](lib/to-byte-array/to-byte-array.js) -- convert some common data to bytes
-- [to-hex](lib/to-hex/to-hex.js) -- convert some common data to hexidecimal
-- [rc4](lib/rc4/rc4.js) -- small symmetric cryptography lib (don't assume it's safe)
-- [sws](lib/sws/sws.js) -- the goal of this test
+- [sws](lib/sws/sws.js): A websocket library using [ws-transform][ws-transform] to apply [rc4-crypt][rc4-crypt] to all
+  websockets
 
 application code:
 
 - server code: [server/index.js](server/index.js)
 - client code: [public/assets/.client.js](public/assets/.client.js)
 - client html: [public/index.html](public/index.html)
+
+[ws-transform]: https://npmjs.com/package/ws-transform
+[rc4-crypt]: https://npmjs.com/package/rc4-crypt
