@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=babel jest --detectOpenHandles",
-    "server": "nodemon --exec node --require esm server --port 3000",
+    "server": "nodemon --exec node --require esm server",
     "postinstall": "browserify -p esmify -e public/assets/.client.js -o public/assets/client.js"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/finwo/gun-private#readme",
   "dependencies": {
     "browserify": "^16.2.3",
+    "cws": "^0.2.2",
     "dotenv": "^6.1.0",
     "ecstatic": "^3.3.0",
     "esm": "^3.0.84",
@@ -33,8 +34,7 @@
     "to-byte-array": "file:lib/to-byte-array",
     "to-hex": "file:lib/to-hex",
     "ws": "^6.1.2",
-    "uws": "file:lib/uws",
-    "xterm": "^3.8.0"
+    "ws-transform": "^0.1.1"
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",
