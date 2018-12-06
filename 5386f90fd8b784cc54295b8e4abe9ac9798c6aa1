@@ -1,0 +1,10 @@
+[ver:1,total:1380]
+package.json:445,1544104800:430,1544108400:15,m
+.gtm/terminal.app:295,1544104800:220,1544108400:75,r
+node_modules/rc4-crypt/src/index.js:215,1544104800:200,1544108400:15,r
+lib/to-byte-array/to-byte-array.test.js:170,1544104800:170,r
+lib/to-byte-array/to-byte-array.js:120,1544104800:120,r
+lib/sws/sws.js:75,1544104800:60,1544108400:15,m
+server/index.js:30,1544108400:30,m
+package-lock.json:15,1544108400:15,m
+coverage/lcov-report/prettify.js:15,1544108400:15,r
