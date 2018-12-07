@@ -102,7 +102,7 @@
   // Initialize the storage
   window.gun = Gun({
     peers: ['http://' + document.location.host + '/gun'],
-    WebSocket: require('sws')(key)
+    WebSocket: require('ws-rc4')(key)
   });
 
   // Configure chat

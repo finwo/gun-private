@@ -8,7 +8,7 @@ let key = argv.key || process.env.KEY || 'deadbeef';
 
 // Load dependencies
 const http = require('http'),
-      sws  = require('sws');
+      sws  = require('ws-rc4');
 
 // Load GUN & extras
 const Gun = require('gun');

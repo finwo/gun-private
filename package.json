@@ -20,7 +20,6 @@
   "homepage": "https://github.com/finwo/gun-private#readme",
   "dependencies": {
     "browserify": "^16.2.3",
-    "cws": "^1.0.0",
     "dotenv": "^6.1.0",
     "ecstatic": "^3.3.0",
     "esm": "^3.0.84",
@@ -28,11 +27,9 @@
     "gun": "^0.9.99999",
     "minimist": "^1.2.0",
     "nodemon": "^1.18.7",
-    "rc4-crypt": "^1.0.0",
-    "sws": "file:lib/sws",
+    "ws-rc4": "^0.1.1",
     "through": "^2.3.8",
-    "ws": "^6.1.2",
-    "ws-transform": "^1.0.0"
+    "ws": "^6.1.2"
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",
