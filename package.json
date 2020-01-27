@@ -21,7 +21,7 @@
   "dependencies": {
     "browserify": "^16.5.0",
     "dotenv": "^8.2.0",
-    "ecstatic": "^3.3.2",
+    "ecstatic": "^4.1.2",
     "esm": "^3.2.25",
     "esmify": "^2.1.1",
     "gun": "^0.9.999993",
