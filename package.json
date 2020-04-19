@@ -37,7 +37,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "expect": "^25.3.0",
-    "jest": "^25.3.0",
+    "jest": "^25.4.0",
     "jest-isa": "0.0.4"
   }
 }
