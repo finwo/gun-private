@@ -36,7 +36,7 @@
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
-    "expect": "^25.4.0",
+    "expect": "^26.0.0",
     "jest": "^25.5.2",
     "jest-isa": "0.0.4"
   }
