@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/finwo/gun-private#readme",
   "dependencies": {
-    "browserify": "^16.5.2",
+    "browserify": "^17.0.0",
     "dotenv": "^8.2.0",
     "ecstatic": "^4.1.4",
     "esm": "^3.2.25",
