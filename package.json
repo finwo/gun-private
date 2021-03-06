@@ -28,7 +28,7 @@
     "minimist": "^1.2.5",
     "nodemon": "^2.0.7",
     "through": "^2.3.8",
-    "ws": "^7.4.3",
+    "ws": "^7.4.4",
     "ws-rc4": "^0.1.3"
   },
   "devDependencies": {
